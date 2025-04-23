@@ -1,0 +1,106 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 25%;
+
+    --primary: 350 100% 88%;
+    --primary-foreground: 355 75% 30%;
+
+    --secondary: 156 70% 95%;
+    --secondary-foreground: 154 75% 30%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 260 75% 95%;
+    --accent-foreground: 262 75% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 350 100% 88%;
+
+    --radius: 1rem;
+  }
+
+  body {
+    @apply bg-background font-body text-foreground;
+  }
+}
+
+@layer components {
+  .btn-bounce {
+    @apply transition-transform hover:scale-105 active:scale-95;
+  }
+  
+  .card-pop {
+    @apply animate-scale-in hover:shadow-lg transition-shadow;
+  }
+  
+  .category-card {
+    @apply rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #FDE1D3;
+  border-radius: 50%;
+  animation: fall 3s ease-in-out forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* For masonry grid */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Subtle animations */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
